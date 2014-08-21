@@ -1,3 +1,6 @@
+import os
+import datetime
+
 import numpy as np
 
 from flask import Flask, render_template
@@ -10,22 +13,26 @@ table = Table([Column(data=[i % 2 for i in range(10)], name='One'),
 
 table = Table.read('all_enrollments.csv', format='ascii.csv')
 
+timestamp = datetime.datetime.fromtimestamp(os.path.getmtime('all_enrollments.csv'))
+
 
 @app.route('/')
 def index():
     return '<h1>Hello world</h1>'
 
 
-@app.route('/table')
+@app.route('/all')
 def user():
-    return render_template('course_info.html', table=table)
+    return render_template('course_info.html', table=table,
+                           timestamp=timestamp)
 
 
-@app.route('/table/<subject>')
+@app.route('/<subject>')
 def subtable(subject):
     keep = table['Subj'] == subject.upper()
     render_me = table[keep]
-    return render_template('course_info.html', table=render_me)
+    return render_template('course_info.html', table=render_me,
+                           timestamp=timestamp)
 
 if __name__ == '__main__':
     app.run(debug=True)
