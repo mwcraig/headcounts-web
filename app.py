@@ -9,10 +9,7 @@ table = Table([Column(data=[i % 2 for i in range(10)], name='One'),
                Column(data=range(10), name='Two')])
 
 table = Table.read('all_enrollments.csv', format='ascii.csv')
-foo = table['Size'].data
-table['Size'] = np.array([int(float(t)) for t in foo])
 
-print table['Size']
 
 @app.route('/')
 def index():
