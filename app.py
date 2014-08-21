@@ -18,7 +18,7 @@ timestamp = datetime.datetime.fromtimestamp(os.path.getmtime('all_enrollments.cs
 
 @app.route('/')
 def index():
-    return '<h1>Hello world</h1>'
+    return '<h1>Instructions</h1><p>Add the name of the rubric whose enrollments you want to see to the URL above.</p>'
 
 
 @app.route('/all')
