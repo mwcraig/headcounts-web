@@ -1,0 +1,21 @@
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<table>
+
+<thead>
+    {% for h in table.colnames %}
+        <th>{{ h }}</th>
+    {% endfor %}
+</thead>
+
+<tbody>
+    {% for row in table %}
+        <tr>
+            {% for data in row %}
+                <td>{{ data }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+
+</tbody>
+
+</table>
