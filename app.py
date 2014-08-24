@@ -10,8 +10,11 @@ app = Flask(__name__)
 
 table = Table.read('all_enrollments.csv', format='ascii.csv')
 
-timestamp = datetime.datetime.fromtimestamp(os.path.getmtime('all_enrollments.csv'))
+avg_time = int(table['timestamp'].mean())
+timestamp = datetime.datetime.fromtimestamp(avg_time)
 
+# We are done with the timestamp column, so nuke it
+table.remove_column('timestamp')
 
 @app.route('/')
 def index():
