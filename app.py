@@ -4,7 +4,7 @@ import datetime
 import numpy as np
 
 from flask import Flask, render_template
-from astropy.table import Table, Column
+from astropy.table import Table
 
 app = Flask(__name__)
 
