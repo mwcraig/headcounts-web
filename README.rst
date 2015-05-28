@@ -2,7 +2,7 @@ headcounts
 **********
 
 headcounts is a simple web app for displaying (reasonably) up-to-date
-enrollments in courses at `Minnesota State University Moorhead `_ for the
+enrollments in courses at `Minnesota State University Moorhead`_ for the
 current semester. It is `deployed on heroku`_ but is based on the `anaconda
 python distribution`_  and `conda`, which doesn't use ``virtualenv``. The
 magic to make this work is the `conda buildpack for heroku by Kenneth Reitz`_ (thanks
