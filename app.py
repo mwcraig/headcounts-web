@@ -6,7 +6,10 @@ import numpy as np
 from flask import Flask, render_template
 from astropy.table import Table
 
+from flask.ext.bootstrap import Bootstrap
+
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 
 table = Table.read('all_enrollments.csv', format='ascii.csv')
 
