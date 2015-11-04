@@ -6,7 +6,7 @@ dependencies:
 - itsdangerous=0.24=py27_0
 - jinja2=2.8=py27_0
 - markupsafe=0.23=py27_0
-- numpy=1.9.3=py27_0
+- numpy=1.10=py27_0
 - openssl=1.0.1k=1
 - pastedeploy=1.5.2=py27_1
 - pip=7.1.0=py27_1
