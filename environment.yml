@@ -18,6 +18,7 @@ dependencies:
 - werkzeug=0.10.4=py27_0
 - wheel=0.24.0=py27_0
 - zlib=1.2.8=0
+- openblas=0.2.14=3
 - pip:
   - dominate==2.1.12
   - flask-bootstrap==3.3.5.6
