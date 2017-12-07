@@ -1,7 +1,4 @@
-import os
 import datetime
-
-import numpy as np
 
 from flask import Flask, render_template
 from astropy.table import Table
@@ -18,18 +15,28 @@ timestamp = datetime.datetime.fromtimestamp(avg_time)
 year_term = str(table['year_term'][0])
 year_term_2 = '0'
 
-if year_term[-1] == '3':
+# Parse year/term codes into human.
+if year_term[-1] == '1':
+    year_term = year_term[:-1]
+    year_term = int(year_term)
+    year_term = year_term - 1
+    year_term_2 = 'Summer'
+elif year_term[-1] == '3':
     year_term = year_term[:-1]
     year_term = int(year_term)
     year_term = year_term - 1
     year_term_2 = 'Fall'
-else:
+elif year_term[-1] == '5':
     year_term = year_term[:-1]
     year_term_2 = 'Spring'
+else:
+    year_term = 'Unknown'
+    year_term_2 = 'Unknown'
 
 
 # We are done with the timestamp column, so nuke it
 table.remove_column('timestamp')
+
 
 @app.route('/')
 def index():
