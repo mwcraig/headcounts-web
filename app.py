@@ -22,6 +22,7 @@ avg_time = int(table['timestamp'].mean())
 timestamp = datetime.datetime.fromtimestamp(avg_time)
 
 CACHE_DIR = 'viewed-csvs'
+COURSE_DETAIL_URL = 'https://webproc.mnscu.edu/registration/search/detail.html?campusid=072&courseid={course_id}&yrtr={year_term}&rcid=0072&localrcid=0072&partnered=false&parent=search'
 
 try:
     os.mkdir(CACHE_DIR)
@@ -163,7 +164,8 @@ def common_response(render_me, path):
                            sch=calc_sch(render_me),
                            filename=file_name,
                            seats=calc_seats(render_me),
-                           revenue=calc_tuition(render_me))
+                           revenue=calc_tuition(render_me),
+                           base_detail_url=COURSE_DETAIL_URL)
 
 
 @app.route('/')

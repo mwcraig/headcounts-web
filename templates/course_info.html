@@ -24,8 +24,13 @@
 <tbody>
     {% for row in table %}
         <tr>
-            {% for data in row %}
-                <td>{{ data }}</td>
+            {% for h in table.colnames %}
+                {% if h == 'ID #' %}
+                    {% set string_cid = '{:06d}'.format(row['ID #'] | int) %}
+                    <td><a href="{{ base_detail_url.format(year_term=row['year_term'], course_id=string_cid) }}">{{ string_cid }}</a></td>
+                {% else %}
+                    <td>{{ row[h] }}</td>
+                {% endif %}
             {% endfor %}
         </tr>
     {% endfor %}
