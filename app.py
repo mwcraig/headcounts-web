@@ -191,6 +191,8 @@ def user():
 @app.route('/<subject>/<spec1>')
 @app.route('/<subject>/<spec1>/<spec2>')
 def subtable_spec(subject, spec1=None, spec2=None):
+    if subject == 'favicon.ico':
+        return ''
     render_me = match_subject(subject, table)
     specs = [spec1, spec2]
     specs = [s for s in specs if s is not None]
