@@ -1,16 +1,40 @@
 {% extends "bootstrap/base.html" %}
 
 {% block content %}
-<h1>Instructions</h1>
-<p>Add the name of the rubric whose enrollments you want to see to the URL above. Examples:</p>
+<<div class="container">
+    <h1>Instructions</h1>
+    <h2>All "navigation" is done by editing the URL in the address bar of your browser.</h2>
 
-<ul>
-    <li>Want math? http://headcounts.herokuapp.com/math</li>
-    <li>Want art? http://headcounts.herokuapp.com/art</li>
-    <li>How about some physics: http://headcounts.herokuapp.com/phys</li>
-    <li>Are you a greedy person who wants it all? Got you covered: http://headcounts.herokuapp.com/all</li>
-</ul>
+    <p>The first thing after the site name is one of the items below. If that is the only thing you specify you will see data for the current or upcoming semester (depending on time of semester)</p>
+    <ul>
+        <li>a subject (e.g. phys or econ, upper or lower case is fine) -- show courses in that subject</li>
+        <li>all -- show all courses.</li>
+        <li>lasc -- shows all lasc courses.</li>
+        <li>wi -- show all writing intensive courses.</li>
+        <li>18online -- show all 18-Online courses.</li>
+    </ul>
 
-<h2>Disclaimer</h2>
-<p>These are NOT real time results. The approximate time that the data was generated is shown above each table.</p>
+    <p>You can narrow the results by adding any of these as the next part of the URL; add more than one to get more specific:</p>
+    <ul>
+        <li>a "year term" code -- show all courses for specific year/term</li>
+        <li>a course number -- show that course for all terms</li>
+        <li>an LASC area -- show only courses in that area for all years</li>
+        <li>all -- show all terms.</li>
+        <li>18online -- show all 18-Online courses.</li>
+    </ul>
+    <h2>Examples:</h2>
+    <ul>
+        <li><b>Current/upcoming Math courses:</b>  <a href="http://headcounts.herokuapp.com/math">http://headcounts.herokuapp.com/math</a></li>
+        <li><b>Current/upcoming writing-intensive courses:</b> <a href="http://headcounts.herokuapp.com/wi">http://headcounts.herokuapp.com/wi</a></li>
+        <li><b>Math 261:</b> <a href="http://headcounts.herokuapp.com/math/261">http://headcounts.herokuapp.com/math/261</a></li>
+        <li><b>Math 261, Fall 2014 only:</b> <a href="http://headcounts.herokuapp.com/math/261/20153">http://headcounts.herokuapp.com/math/261/20153</a></li>
+        <li><b>Art courses, Fall 2014:</b> <a href="http://headcounts.herokuapp.com/art/20153">http://headcounts.herokuapp.com/art/20153</a></li>
+        <li><b>LASC area 2 courses, Spring 2016:</b> <a href="http://headcounts.herokuapp.com/lasc/2/20165">http://headcounts.herokuapp.com/lasc/2/20165</a></li>
+        <li><b>Everything:</b> <a href="http://headcounts.herokuapp.com/all">http://headcounts.herokuapp.com/all</a></li>
+    </ul>
+
+    <h2>Disclaimer</h2>
+    <p>These are NOT real time results. The approximate time that the data was generated is shown above each table.</p>
+</div>
+
 {% endblock %}
