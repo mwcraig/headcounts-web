@@ -99,8 +99,10 @@ def calc_tuition(table, variable_credits=1):
     by_credit = table['Tuition unit'] == 'credit'
     credits = filled_credits(table['Crds'],
                              variable_credits=variable_credits)
+    tuition_nas = table['Tuition -resident'] == 'n/a'
+    table['Tuition -resident'].mask |= tuition_nas
     # parse tuition as a string into a number
-    money = [float(m.replace('$', '').replace(',', '')) for m in table['Tuition -resident'].filled(fill_value=0)]
+    money = [float(m.replace('$', '').replace(',', '')) for m in table['Tuition -resident'].filled(fill_value='0')]
     money *= table['Enrolled']
     money[by_credit] *= credits[by_credit]
     return money.sum()
