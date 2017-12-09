@@ -136,6 +136,8 @@ def match_subject(subject, tbl):
     elif subject == '18online':
         keep = tbl['18online'] == 'True'
         render_me = tbl[keep]
+    elif subject == 'all':
+        render_me = tbl.copy()
     else:
         # Regular academic subject...
         keep = tbl['Subj'] == subject.upper()
@@ -175,10 +177,10 @@ def index():
     return render_template('instructions.html', )
 
 
-@app.route('/all')
-def user():
-    return render_template('course_info.html', table=table,
-                           timestamp=timestamp)
+# @app.route('/all')
+# def user():
+#     return render_template('course_info.html', table=table,
+#                            timestamp=timestamp)
 
 
 # @app.route('/<subject>')
@@ -200,7 +202,7 @@ def subtable_spec(subject, spec1=None, spec2=None):
     render_me = match_subject(subject, table)
     specs = [spec1, spec2]
     specs = [s for s in specs if s is not None]
-    if not specs:
+    if not specs and subject != 'all':
         terms = sorted(set(render_me['year_term']))
         most_recent = terms[-1]
         keep = render_me['year_term'] == most_recent
