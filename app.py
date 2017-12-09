@@ -85,6 +85,8 @@ def calc_seats(table):
     """
     not_canceled = table['Status'] != 'Cancelled'
     empty = table['Size:'] - table['Enrolled']
+    positive = empty > 0
+    empty *= positive
     empty = empty[not_canceled].sum()
     available = table['Size:'][not_canceled].sum()
     filled = table['Enrolled'][not_canceled].sum()
@@ -177,22 +179,6 @@ def index():
     return render_template('instructions.html', )
 
 
-# @app.route('/all')
-# def user():
-#     return render_template('course_info.html', table=table,
-#                            timestamp=timestamp)
-
-
-# @app.route('/<subject>')
-# def subtable(subject):
-#     keep = table['Subj'] == subject.upper()
-#     render_me = table[keep]
-#     terms = sorted(set(render_me['year_term']))
-#     most_recent = terms[-1]
-#     keep = render_me['year_term'] == most_recent
-#     render_me = render_me[keep]
-#     return common_response(render_me, request.path)
-
 @app.route('/<subject>')
 @app.route('/<subject>/<spec1>')
 @app.route('/<subject>/<spec1>/<spec2>')
@@ -225,25 +211,10 @@ def subtable_spec(subject, spec1=None, spec2=None):
     return common_response(render_me, request.path)
 
 
-# @app.route('/lasc')
-# def lasc_courses():
-#     render_me = table[~table['LASC/WI'].mask]
-#     really_lasc = np.array([len(lasc.strip('WI')) > 0 for lasc in render_me['LASC/WI']])
-#     render_me = render_me[really_lasc]
-#     return common_response(render_me, request.path)
-
-
 @app.route('/download/<filename>')
 def download(filename):
     # https://stackoverflow.com/questions/34009980/return-a-download-and-rendered-page-in-one-flask-response
     return send_from_directory(CACHE_DIR, filename)
-
-# More routes:
-#
-# /LASC -- All LASC courses, most recent term
-# /<subject> or LASC/year_term -- subject or LASC, specified term
-# /<subject> or LASC/number (not a year_term) -- just that course or LASC area
-# ../all -- whatever precedes these, for all terms
 
 
 if __name__ == '__main__':
