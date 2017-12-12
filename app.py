@@ -2,6 +2,7 @@ import datetime
 import os
 import logging
 import sys
+import re
 
 import numpy as np
 from flask import Flask, render_template, request, send_from_directory
@@ -20,6 +21,8 @@ table = Table.read('all_enrollments.csv', format='ascii.csv')
 
 avg_time = int(table['timestamp'].mean())
 timestamp = datetime.datetime.fromtimestamp(avg_time)
+
+table.sort(['year_term', 'Subj', '#'])
 
 CACHE_DIR = 'viewed-csvs'
 COURSE_DETAIL_URL = 'https://webproc.mnscu.edu/registration/search/detail.html?campusid=072&courseid={course_id}&yrtr={year_term}&rcid=0072&localrcid=0072&partnered=false&parent=search'
@@ -197,8 +200,12 @@ def subtable_spec(subject, spec1=None, spec2=None):
         for spec in specs:
             if spec != 'all':
                 if len(spec) == 5 and spec[-1] in ['1', '3', '5']:
-                    # spec probably a year/term, filter by it
+                    # spec probably a year/term, filter by it:
                     keep = render_me['year_term'] == int(spec)
+                elif (re.match('[a-z]{2,4}', spec.lower()) and
+                      spec.lower() not in ['lasc', 'wi']):
+                    # spec is probably a course rubric, filter by it:
+                    keep = render_me['Subj'] == spec.upper()
                 else:
                     # Assume it was a course number or LASC area
                     if subject == 'lasc':
