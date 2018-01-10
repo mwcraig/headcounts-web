@@ -19,8 +19,6 @@ dependencies:
 - numpy=1.13.1
 - openssl=1.0.2l
 - pip=9.0.1
-- py=1.4.34
-- pytest=3.2.1
 - python=3.6.2
 - readline=6.2
 - setuptools=36.4.0
