@@ -4,6 +4,7 @@ channels:
 - main
 dependencies:
 - nomkl
+- gunicorn
 - astropy=2.0.2
 - click=6.7
 - coverage=4.4.1
