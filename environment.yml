@@ -8,7 +8,7 @@ dependencies:
 - coverage=4.4.1
 - flask=0.12.2
 - itsdangerous=0.24
-- jinja2=2.10
+- jinja2=2.9.6
 - libffi=3.2.1
 - libgfortran=3.0.0
 - markupsafe=1.0
