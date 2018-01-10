@@ -1,26 +1,45 @@
-name: heads_web
+name: heads_web3
 dependencies:
-- astropy=1.0.4=np19py27_0
-- flask=0.10.1=py27_1
-- gunicorn=19.1.0=py27_0
-- itsdangerous=0.24=py27_0
-- jinja2=2.8=py27_0
-- markupsafe=0.23=py27_0
-- numpy=1.9.3=py27_0
-- openssl=1.0.1k=1
-- pastedeploy=1.5.2=py27_1
-- pip=7.1.0=py27_1
-- python=2.7.10=0
-- readline=6.2=2
-- setuptools=18.1=py27_0
-- sqlite=3.8.4.1=1
-- tk=8.5.18=0
-- werkzeug=0.10.4=py27_0
-- wheel=0.24.0=py27_0
-- zlib=1.2.8=0
-- openblas=0.2.14=3
-- libgfortran=1.0=0
+- astropy=2.0.3=py36h1de35cc_0
+- attrs=17.3.0=py36h9f37037_0
+- ca-certificates=2017.08.26=ha1e5d58_0
+- certifi=2017.11.5=py36ha569be9_0
+- click=6.7=py36hec950be_0
+- coverage=4.4.2=py36h8d5022f_0
+- flask=0.12.2=py36h5658096_0
+- hypothesis=3.38.5=py36hcba0581_0
+- intel-openmp=2018.0.0=h8158457_8
+- itsdangerous=0.24=py36h49fbb8d_1
+- jinja2=2.10=py36hd36f9c5_0
+- libcxx=4.0.1=h579ed51_0
+- libcxxabi=4.0.1=hebd6815_0
+- libedit=3.1=hb4e282d_0
+- libffi=3.2.1=h475c297_4
+- libgfortran=3.0.1=h93005f0_2
+- markupsafe=1.0=py36h3a1e703_1
+- mkl=2018.0.1=hfbd8650_4
+- ncurses=6.0=hd04f020_2
+- numpy=1.14.0=py36h8a80b8c_0
+- openssl=1.0.2n=hdbc3d79_0
+- pip=9.0.1=py36h1555ced_4
+- pluggy=0.6.0=py36hb1d0581_0
+- py=1.5.2=py36ha69170d_0
+- pympler=0.5=py36hc2752d1_0
+- pytest=3.3.0=py36h707cbdc_0
+- python=3.6.4=hc167b69_0
+- readline=7.0=hc1231fa_4
+- setuptools=36.5.0=py36h2134326_0
+- six=1.11.0=py36h0e22d5e_1
+- sqlite=3.20.1=h7e4c145_2
+- tk=8.6.7=h35a86e2_3
+- werkzeug=0.12.2=py36h168efa1_0
+- wheel=0.30.0=py36h5eb2c71_1
+- xz=5.2.3=h0278029_2
+- zlib=1.2.11=hf3cbc9b_2
+- zope=1.0=py36_0
+- zope.interface=4.4.3=py36h74e83c9_0
 - pip:
-  - dominate==2.1.12
-  - flask-bootstrap==3.3.5.6
+  - dominate==2.3.1
+  - flask-bootstrap==3.3.7.1
+  - visitor==0.1.3
 
