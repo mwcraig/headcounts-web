@@ -3,6 +3,7 @@ channels:
 - defaults
 - main
 dependencies:
+- nomkl
 - astropy=2.0.2
 - click=6.7
 - coverage=4.4.1
@@ -12,14 +13,11 @@ dependencies:
 - libffi=3.2.1
 - libgfortran=3.0.0
 - markupsafe=1.0
-- nomkl
 - ncurses=5.9
 - numpy=1.13.1
 - openssl=1.0.2l
 - pip=9.0.1
-- py=1.4.34
-- pytest=3.2.1
-- python=3.6.2
+- python=3.6
 - readline=6.2
 - setuptools=36.4.0
 - six=1.10.0
