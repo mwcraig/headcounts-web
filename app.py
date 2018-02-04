@@ -8,7 +8,7 @@ import numpy as np
 from flask import Flask, render_template, request, send_from_directory
 from astropy.table import Table, Column
 
-from flask.ext.bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
