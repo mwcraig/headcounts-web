@@ -167,8 +167,12 @@ def common_response(render_me, path):
     terms = sorted(set(render_me['year_term']))
     year_terms = ', '.join([parse_year_term(str(t)) for t in terms])
     file_name = gen_cache_file(path, render_me)
+    most_recent = int(render_me['timestamp'].max())
+    most_recent = datetime.datetime.fromtimestamp(most_recent)
+    oldest = render_me['timestamp'].min()
     return render_template('course_info.html', table=render_me,
                            timestamp=timestamp,
+                           most_recent=most_recent,
                            year_term=year_terms,
                            sch=calc_sch(render_me),
                            filename=file_name,
