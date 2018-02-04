@@ -25,7 +25,7 @@ timestamp = datetime.datetime.fromtimestamp(avg_time)
 table.sort(['year_term', 'Subj', '#'])
 
 CACHE_DIR = 'viewed-csvs'
-COURSE_DETAIL_URL = 'https://webproc.mnscu.edu/registration/search/detail.html?campusid=072&courseid={course_id}&yrtr={year_term}&rcid=0072&localrcid=0072&partnered=false&parent=search'
+COURSE_DETAIL_URL = 'https://eservices.minnstate.edu/registration/search/detail.html?campusid=072&courseid={course_id}&yrtr={year_term}&rcid=0072&localrcid=0072&partnered=false&parent=search'
 
 try:
     os.mkdir(CACHE_DIR)
