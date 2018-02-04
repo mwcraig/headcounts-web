@@ -55,7 +55,8 @@ def main(new_data_file):
 
     if data_to_append:
         # locs = [new_data.loc[idx] for idx in ]
-        result = vstack([current_data, new_data.loc[data_to_append['index']]], join_type='exact')
+        result = vstack([current_data, new_data.loc[data_to_append['index']]],
+                        join_type='exact')
 
     # Clean up after ourselves...
     result.remove_column('index')
