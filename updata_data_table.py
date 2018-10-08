@@ -1,4 +1,5 @@
 from astropy.table import Table, join, vstack, Column
+import numpy as np
 
 
 def add_index_col(table):
@@ -49,6 +50,17 @@ def main(new_data_file):
             current_loc = current_data.loc[idx].index
             current_data[current_loc] = new_data.loc[idx]
         result = current_data
+
+    print(new_data['Tuition -resident'].dtype)
+    print(current_data['Tuition -resident'].dtype)
+
+    potentially_missing_tuition = ['Tuition -resident', 'Tuition -nonresident']
+    for tuition in potentially_missing_tuition:
+        if new_data[tuition].dtype == np.int:
+            # Apparently there was no price data, so set it to zero.
+            zs = ['$0.00' for _ in range(len(new_data))]
+            c = Column(data=zs, name=tuition)
+            new_data.replace_column(tuition, c)
 
     if 'Cr/Hr' in new_data.colnames:
         new_data.rename_column('Cr/Hr', 'Crds')
