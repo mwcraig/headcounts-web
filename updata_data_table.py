@@ -9,8 +9,10 @@ def add_index_col(table):
 
     No return value, all the action is the changes made to table.
     """
-    index_data = [str(yrtr) + str(id) for yrtr, id in
-                  zip(table['year_term'], table['ID #'])]
+    index_data = [str(yrtr) + str(id) + str(subject) + str(num) for
+                  yrtr, id, subject, num in
+                  zip(table['year_term'], table['ID #'],
+                      table['Subj'], table['#'])]
     table.add_column(Column(index_data, name='index'))
     table.add_index('index')
 
@@ -31,8 +33,12 @@ def main(new_data_file):
                       keys='index', join_type='left')
 
     # Identify updates
-
-    common_entries = ~ data_match['year_term_2'].mask
+    try:
+        # Starting in astropy 4 the result of a join is no longer always
+        # masked.
+        common_entries = ~ data_match['year_term_2'].mask
+    except AttributeError:
+        common_entries = np.ones_like(data_match['year_term_2'], dtype='bool')
     # Deal with any updates first, then append everything else (which
     # may actually be everything)
 
@@ -54,7 +60,9 @@ def main(new_data_file):
     print(new_data['Tuition -resident'].dtype)
     print(current_data['Tuition -resident'].dtype)
 
-    potentially_missing_tuition = ['Tuition -resident', 'Tuition -nonresident']
+    potentially_missing_tuition = ['Tuition -resident',
+                                   'Tuition -nonresident',
+                                   'Approximate Course Fees']
     for tuition in potentially_missing_tuition:
         if new_data[tuition].dtype == np.int:
             # Apparently there was no price data, so set it to zero.
